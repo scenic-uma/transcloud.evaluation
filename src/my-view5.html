@@ -1,21 +1,11 @@
-<!--
-@license
-Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
-
-<link rel="import" href="../bower_components/polymer/polymer.html">
+<html><head><link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="shared-styles.html">
 <link rel="import" href="../bower_components/app-layout/app-grid/app-grid-style.html">
 <link rel="import" href="../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../bower_components/google-chart/google-chart.html">
 <link rel="import" href="../bower_components/iron-resizable-behavior/iron-resizable-behavior.html">
 
-<dom-module id="my-view5">
+</head><body><dom-module id="my-view5">
   <template>
     <style include="app-grid-style">
       :host {
@@ -34,18 +24,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     </style>
 
-    <div class= "app-grid">
+    <div class="app-grid">
 
-      <paper-card class="item" >
+      <paper-card class="item">
         <div class="card-content">
           <p>Here's a material line chart:</p>
-         <google-chart
-         id="charX"
-         type="md-line"
-         options='{"title": "Days in a month"}'
-         cols='[{"label": "Month", "type": "string"},{"label": "Days", "type": "number"}, {"label": "Days2", "type": "number"}]'
-         rows='[["Jan", 31, 2],["Feb", 28, 1], ["May", 3, 4], ["Jaan", 5, 6], ["Jans", 7, 8], ["Janw", 9, 10]]'
-         >
+         <google-chart id="charX" type="md-line" options="{&quot;title&quot;: &quot;Days in a month&quot;}" cols="[{&quot;label&quot;: &quot;Month&quot;, &quot;type&quot;: &quot;string&quot;},{&quot;label&quot;: &quot;Days&quot;, &quot;type&quot;: &quot;number&quot;}, {&quot;label&quot;: &quot;Days2&quot;, &quot;type&quot;: &quot;number&quot;}]" rows="[[&quot;Jan&quot;, 31, 2],[&quot;Feb&quot;, 28, 1], [&quot;May&quot;, 3, 4], [&quot;Jaan&quot;, 5, 6], [&quot;Jans&quot;, 7, 8], [&quot;Janw&quot;, 9, 10]]">
          </google-chart>
 
         </div>
@@ -57,37 +41,27 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <div class="circle">111111</div>
                 <h1>View One</h1>
                 <p>Ut labores minimum atomorum pro. Laudem tibique ut has.
-                <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
+                </p><p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
               </div>
             </paper-card>
-      <paper-card class="item" >
+      <paper-card class="item">
         <div class="card-content">
           <p>Here's a MATERIAL line chart:</p>
-         <google-chart
-
-         type="md-line"
-         options='{"title": "Days in a month"}'
-         cols='[{"label": "Month", "type": "string"},{"label": "Days", "type": "number"}, {"label": "Days2", "type": "number"}]'
-         rows='[["Jan", 31, 2],["Feb", 28, 1], ["May", 3, 4], ["Jaan", 5, 6], ["Jans", 7, 8], ["Janw", 9, 10]]'
-         >
+         <google-chart type="md-line" options="{&quot;title&quot;: &quot;Days in a month&quot;}" cols="[{&quot;label&quot;: &quot;Month&quot;, &quot;type&quot;: &quot;string&quot;},{&quot;label&quot;: &quot;Days&quot;, &quot;type&quot;: &quot;number&quot;}, {&quot;label&quot;: &quot;Days2&quot;, &quot;type&quot;: &quot;number&quot;}]" rows="[[&quot;Jan&quot;, 31, 2],[&quot;Feb&quot;, 28, 1], [&quot;May&quot;, 3, 4], [&quot;Jaan&quot;, 5, 6], [&quot;Jans&quot;, 7, 8], [&quot;Janw&quot;, 9, 10]]">
          </google-chart>
 
         </div>
       </paper-card>
 
 
-      <paper-card class="item" >
+      <paper-card class="item">
         <div class="card-content">
           <p>Here's a material line chart:</p>
-         <google-chart
-
-         type="md-line"
-         options='{"title": "Days in a month"}'
-         data='[["Year", "Things", "Stuff"],
-         ["ji", 1000, 400],
-         ["hi", 1170, 460],
-         ["2006", 660, 1120],
-         ["2007", 1030, 540]]'>
+         <google-chart type="md-line" options="{&quot;title&quot;: &quot;Days in a month&quot;}" data="[[&quot;Year&quot;, &quot;Things&quot;, &quot;Stuff&quot;],
+         [&quot;ji&quot;, 1000, 400],
+         [&quot;hi&quot;, 1170, 460],
+         [&quot;2006&quot;, 660, 1120],
+         [&quot;2007&quot;, 1030, 540]]">
          </google-chart>
 
         </div>
@@ -102,7 +76,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <div class="circle">111111</div>
           <h1>View One</h1>
           <p>Ut labores minimum atomorum pro. Laudem tibique ut has.
-          <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
+          </p><p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
         </div>
       </paper-card>
 
@@ -112,30 +86,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <div class="circle">111111</div>
           <h1>View One</h1>
           <p>Ut labores minimum atomorum pro. Laudem tibique ut has.
-          <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
+          </p><p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
         </div>
       </paper-card>
     </div>
   </template>
 
-  <script>
-    Polymer({
-      is: 'my-view5',
-
-      behaviors: [
-            Polymer.IronResizableBehavior
-          ],
-
-      listeners: {
-          'iron-resize': '_onIronResize'
-        },
-
-        _onIronResize: function() {
-           var charX= this.$.charX;
-           charX.redraw();
-         }
-
-    });
-
-  </script>
+  <script>Polymer({is:"my-view5",behaviors:[Polymer.IronResizableBehavior],listeners:{"iron-resize":"_onIronResize"},_onIronResize:function(){var e=this.$.charX;e.redraw()}});</script>
 </dom-module>
+</body></html>

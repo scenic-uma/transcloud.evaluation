@@ -1,14 +1,4 @@
-<!--
-@license
-Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
-
-<link rel="import" href="../bower_components/polymer/polymer.html">
+<html><head><link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="shared-styles.html">
 <link rel="import" href="../bower_components/app-layout/app-grid/app-grid-style.html">
 <link rel="import" href="../bower_components/paper-card/paper-card.html">
@@ -17,7 +7,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="evaluation-chart.html">
 
-<dom-module id="my-view6">
+</head><body><dom-module id="my-view6">
   <template>
     <style include="app-grid-style">
       :host {
@@ -36,111 +26,30 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     </style>
 
-    <div class= "app-grid">
+    <div class="app-grid">
 
 
-      <!-- <paper-card class="item" >
-        <div class="card-content">
-          <p>Here's a material line chart:</p>
-         <google-chart
-         id="charX"
-         type="md-line"
-         options='{"title": "Days in a month"}'
-         cols='[{"label": "Month", "type": "string"},{"label": "Days", "type": "number"}, {"label": "Days2", "type": "number"}]'
-         rows='[["Jan", 31, 2],["Feb", 28, 1], ["May", 3, 4], ["Jaan", 5, 6], ["Jans", 7, 8], ["Janw", 9, 10]]'
-         >
-         </google-chart>
+      
 
-        </div>
-      </paper-card> -->
+      
 
-      <!-- <paper-card >
-              <div class="card-content">
-                <div class="circle">1</div>
-                <div class="circle">111111</div>
-                <h1>View No Item</h1>
-                <p>Ut labores minimum atomorum pro. Laudem tibique ut has.
-                <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
-              </div>
-            </paper-card>
-          -->
-
-      <!-- <paper-card class="item" >
-        <div class="card-content">
-          <p>Here's a MATERIAL line chart:</p>
-         <google-chart
-         id="charX"
-         type="md-line"
-         options='{"title": "Days in a month"}'
-         cols='[{"label": "Month", "type": "string"},{"label": "Days", "type": "number"}, {"label": "Days2", "type": "number"}]'
-         rows='[["Jan", 31, 2],["Feb", 28, 1], ["May", 3, 4], ["Jaan", 5, 6], ["Jans", 7, 8], ["Janw", 9, 10]]'
-         >
-         </google-chart>
-
-        </div>
-      </paper-card> -->
+      
 
 
-      <!-- <paper-card class="item" >
-        <div class="card-content">
-          <p>Here's a material line chart:</p>
-         <google-chart
-         id="charX"
-         type="md-line"
-         options='{"title": "Days in a month"}'
-         data='[["Year", "Things", "Stuff"],
-         ["ji", 1000, 400],
-         ["hi", 1170, 460],
-         ["2006", 660, 1120],
-         ["2007", 1030, 540]]'>
-         </google-chart>
-
-        </div>
-      </paper-card>
-    -->
+      
 
 
-      <!-- <paper-card class="item">
-        <div class="card-content">
-          <div class="circle">1</div>
-          <div class="circle">111111</div>
-          <h1>View One</h1>
-          <p>Ut labores minimum atomorum pro. Laudem tibique ut has.
-          <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
-        </div>
-      </paper-card> -->
+      
 
-      <!-- <paper-card class="item">
-        <div class="card-content">
-          <div class="circle">1</div>
-          <div class="circle">111111</div>
-          <h1>View One</h1>
-          <p>Ut labores minimum atomorum pro. Laudem tibique ut has.
-          <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
-        </div>
-      </paper-card> -->
+      
 
-      <!-- <paper-card class="item">
-        <div class="card-content">
-          <div class="circle">1</div>
-          <div class="circle">111111</div>
-          <h1>View One</h1>
-          <p>Ut labores minimum atomorum pro. Laudem tibique ut has.
-          <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
-          <template is="dom-repeat" items="{{chartData}}">
-               <div>First name: <span>{{item.size}}</span></div>
-           </template>
-        </div>
-      </paper-card> -->
+      
 
-      <iron-ajax auto
-                 url="./data/chart/eval-paas-chart.json"
-                 handle-as="json"
-                 last-response="{{chartData}}"></iron-ajax>
+      <iron-ajax auto="" url="./data/chart/eval-paas-chart.json" handle-as="json" last-response="{{chartData}}"></iron-ajax>
 
       <template is="dom-repeat" items="{{chartData}}">
-          <evaluation-chart joselito="joselito" xx={{item}} evaluation={{index}}></evaluation-chart>
-         </paper-card>
+          <evaluation-chart joselito="joselito" xx="{{item}}" evaluation="{{index}}"></evaluation-chart>
+         
        </template>
 
     </div>
@@ -148,29 +57,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   </template>
 
-  <script>
-    Polymer({
-      is: 'my-view6',
-
-      /*behaviors: [
-            Polymer.IronResizableBehavior
-          ],
-
-      listeners: {
-          'iron-resize': '_onIronResize'
-        },
-
-        _onIronResize: function() {
-           console.log("OnRESIZE");
-           //var charX2 = $$('charXX');
-           //console.log(charX2);
-           //charX2.redraw();
-           //console.log(this.$.charX);
-           //var charX= this.$.charX;
-           //charX.redraw();
-         }*/
-
-    });
-
-  </script>
+  <script>Polymer({is:"my-view6"});</script>
 </dom-module>
+</body></html>
