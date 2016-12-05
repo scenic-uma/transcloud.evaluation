@@ -1,0 +1,125 @@
+<!doctype html>
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../bower_components/iron-resizable-behavior/iron-resizable-behavior.html">
+<link rel="import" href="../bower_components/google-chart/google-chart.html">
+
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="evaluation-chart">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+        height: inherit;
+      }
+      google-chart {
+        height: auto;
+        width: auto;
+      }
+    </style>
+    <paper-card>
+      <div class="card-content">
+        <div class="circle">{{evaluation}}</div>
+        <p>Ut labores minimum atomorum pro. Laudem tibique ut has.
+        <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
+        <template is="dom-if" if={{xx}} restamp="true">
+          <google-chart
+          id="charX"
+          type="md-line"
+          options='{"title": "Days in a month"}'
+          data={{valuesForChart}}>
+        </google-chart>
+      </template>
+    </div>
+    </paper-card>
+
+
+  </template>
+
+  <script>
+    Polymer({
+      is: 'evaluation-chart',
+      properties: {
+        joselito: {
+          type: String,
+          value: 'default',
+        },
+        xx: {
+          type: Object,
+          value: null,
+          observer: '_render',
+        },
+        evaluation: {
+          type: Number,
+        },
+
+        valuesForChart: {
+          type: Array,
+          value: null,
+        }
+      },
+
+      _render: function() {
+        if(this.xx) {
+          this.valuesForChart =
+            [
+              this.xx.names,
+              this.toDataArray(this.xx.setup),
+              this.toDataArray(this.xx.preStart),
+              this.toDataArray(this.xx.deploy),
+              this.toDataArray(this.xx.preLaunch),
+              this.toDataArray(this.xx.launch),
+              this.toDataArray(this.xx.postLaunch),
+              this.toDataArray(this.xx.postStart),
+            ];
+        }
+        console.log("");
+
+      },
+
+      toDataArray: function(arrayOfStrings) {
+        if (arrayOfStrings) {
+            return [
+              arrayOfStrings[0],
+              Number(arrayOfStrings[1]),
+              Number(arrayOfStrings[2]),
+              Number(arrayOfStrings[3]),
+              Number(arrayOfStrings[4]),
+              Number(arrayOfStrings[5]),
+              Number(arrayOfStrings[6]),
+              Number(arrayOfStrings[7]),
+          ]
+        }
+        return null;
+      },
+
+/*
+      behaviors: [
+            Polymer.IronResizableBehavior
+          ],
+
+      listeners: {
+          'iron-resize': '_onIronResize'
+        },
+
+      _onIronResize: function() {
+        console.log("RESIZE");
+         var charX= this.$.charX;
+         charX.redraw();
+
+       }*/
+    });
+  </script>
+</dom-module>

@@ -1,0 +1,26 @@
+[
+    {
+      "name": "Pizza",
+      "cheap": true
+    },
+    {
+      "name": "Pasta",
+      "cheap": false
+    },
+    {
+      "name": "Pasta",
+      "cheap": false
+    },
+    {
+      "name": "Pasta",
+      "cheap": false
+    },
+    {
+      "name": "Pasta",
+      "cheap": false
+    },
+    {
+      "name": "Toast",
+      "cheap": true
+    }
+  ]
