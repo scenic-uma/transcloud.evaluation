@@ -2,7 +2,6 @@
   "name": "My App",
   "short_name": "My App",
   "start_url": "/?homescreen=1",
-  "scope": "/transcloud.evaluation/",
   "display": "standalone",
   "theme_color": "#3f51b5",
   "background_color": "#3f51b5",
