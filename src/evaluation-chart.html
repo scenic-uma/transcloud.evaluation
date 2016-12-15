@@ -3,36 +3,69 @@
 <link rel="import" href="../bower_components/paper-material/paper-material.html">
 <link rel="import" href="../bower_components/iron-resizable-behavior/iron-resizable-behavior.html">
 <link rel="import" href="../bower_components/google-chart/google-chart.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/iron-media-query/iron-media-query.html">
 
 <link rel="import" href="shared-styles.html">
 
 </head><body><dom-module id="evaluation-chart">
   <template>
     <style include="shared-styles">
+
       :host {
         display: block;
-        height: inherit;
+        width: inherit;
+        margin: 0;
+        --paper-card-header: {
+          background-color:   #BDBDBD;
+        };
       }
-      google-chart {
-        height: auto;
-        width: auto;
-      }
-    </style>
-    <paper-card>
-      <div class="card-content">
-        <div class="circle">{{evaluation}}</div>
-        <p>Ut labores minimum atomorum pro. Laudem tibique ut has.
-        </p><p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
-        <template is="dom-if" if="{{xx}}" restamp="true">
-          <google-chart id="charX" type="md-line" options="{&quot;title&quot;: &quot;Days in a month&quot;}" data="{{valuesForChart}}">
-        </google-chart>
-      </template>
-    </div>
-    </paper-card>
 
+      #resizingchart {
+        width: 500px !important;
+        height: 300px !important;
+      }
+
+
+      paper-card{
+        width: 100%;
+      }
+
+      @media(min-width: 1470px) {
+        #resizingchart {
+          width: 500px !important;
+          height: 300px !important;
+
+        }
+      }
+
+      @media(max-width: 1470px) {
+        #resizingchart {
+          width: 500px !important;
+          height: 300px !important;
+        }
+      }
+
+    </style>
+
+    <paper-card id="papercard" heading="{{evaluation}}º Deployment on {{providers}}">
+      <div class="card-content">
+        
+          <content select="ggcc"></content>
+          <div align="center">
+            <google-chart id="resizingchart" type="md-line" data="{{valuesForChart}}">
+            </google-chart>
+          </div>
+      
+    </div>
+    <div class="card-actions">
+      <paper-icon-button class="download-icon" icon="cloud-download"></paper-icon-button>
+    </div>
+
+    </paper-card>
 
   </template>
 
-  <script>Polymer({is:"evaluation-chart",properties:{joselito:{type:String,value:"default"},xx:{type:Object,value:null,observer:"_render"},evaluation:{type:Number},valuesForChart:{type:Array,value:null}},_render:function(){this.xx&&(this.valuesForChart=[this.xx.names,this.toDataArray(this.xx.setup),this.toDataArray(this.xx.preStart),this.toDataArray(this.xx.deploy),this.toDataArray(this.xx.preLaunch),this.toDataArray(this.xx.launch),this.toDataArray(this.xx.postLaunch),this.toDataArray(this.xx.postStart)]),console.log("")},toDataArray:function(t){return t?[t[0],Number(t[1]),Number(t[2]),Number(t[3]),Number(t[4]),Number(t[5]),Number(t[6]),Number(t[7])]:null}});</script>
+  <script>Polymer({is:"evaluation-chart",properties:{data:{type:Object,value:null,observer:"_render"},evaluation:{type:Number},valuesForChart:{type:Array,value:null},providers:{type:String}},_render:function(){this.data&&(this.valuesForChart=[this.data.names,this.toDataArray(this.data.setup),this.toDataArray(this.data.preStart),this.toDataArray(this.data.deploy),this.toDataArray(this.data.preLaunch),this.toDataArray(this.data.launch),this.toDataArray(this.data.postLaunch),this.toDataArray(this.data.postStart)])},toDataArray:function(t){return t?[t[0],Number(t[1]),Number(t[2]),Number(t[3]),Number(t[4]),Number(t[5]),Number(t[6]),Number(t[7])]:null},behaviors:[Polymer.IronResizableBehavior],listeners:{"iron-resize":"_onIronResize"},_onIronResize:function(t){this.$.resizingchart}});</script>
 </dom-module>
 </body></html>

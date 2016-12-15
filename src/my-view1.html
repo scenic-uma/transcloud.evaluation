@@ -1,72 +1,290 @@
-<html><head><meta charset="UTF-8"><link rel="import" href="my-app.html"></head><body><dom-module id="my-view1">
+<html><head><meta charset="UTF-8"><link rel="import" href="my-app.html"></head><body><div hidden="" by-vulcanize=""><script>Polymer.PaperButtonBehaviorImpl={properties:{elevation:{type:Number,reflectToAttribute:!0,readOnly:!0}},observers:["_calculateElevation(focused, disabled, active, pressed, receivedFocusFromKeyboard)","_computeKeyboardClass(receivedFocusFromKeyboard)"],hostAttributes:{role:"button",tabindex:"0",animated:!0},_calculateElevation:function(){var e=1;this.disabled?e=0:this.active||this.pressed?e=4:this.receivedFocusFromKeyboard&&(e=3),this._setElevation(e)},_computeKeyboardClass:function(e){this.toggleClass("keyboard-focus",e)},_spaceKeyDownHandler:function(e){Polymer.IronButtonStateImpl._spaceKeyDownHandler.call(this,e),this.hasRipple()&&this.getRipple().ripples.length<1&&this._ripple.uiDownAction()},_spaceKeyUpHandler:function(e){Polymer.IronButtonStateImpl._spaceKeyUpHandler.call(this,e),this.hasRipple()&&this._ripple.uiUpAction()}},Polymer.PaperButtonBehavior=[Polymer.IronButtonState,Polymer.IronControlState,Polymer.PaperRippleBehavior,Polymer.PaperButtonBehaviorImpl];</script>
+<dom-module id="paper-button" assetpath="../bower_components/paper-button/">
+  <template strip-whitespace="">
+    <style include="paper-material-shared-styles">
+      :host {
+        @apply(--layout-inline);
+        @apply(--layout-center-center);
+        position: relative;
+        box-sizing: border-box;
+        min-width: 5.14em;
+        margin: 0 0.29em;
+        background: transparent;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        -webkit-tap-highlight-color: transparent;
+        font: inherit;
+        text-transform: uppercase;
+        outline-width: 0;
+        border-radius: 3px;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;
+        cursor: pointer;
+        z-index: 0;
+        padding: 0.7em 0.57em;
+
+        @apply(--paper-font-common-base);
+        @apply(--paper-button);
+      }
+
+      :host([hidden]) {
+        display: none !important;
+      }
+
+      :host([raised].keyboard-focus) {
+        font-weight: bold;
+        @apply(--paper-button-raised-keyboard-focus);
+      }
+
+      :host(:not([raised]).keyboard-focus) {
+        font-weight: bold;
+        @apply(--paper-button-flat-keyboard-focus);
+      }
+
+      :host([disabled]) {
+        background: #eaeaea;
+        color: #a8a8a8;
+        cursor: auto;
+        pointer-events: none;
+
+        @apply(--paper-button-disabled);
+      }
+
+      :host([animated]) {
+        @apply(--shadow-transition);
+      }
+
+      paper-ripple {
+        color: var(--paper-button-ink-color);
+      }
+    </style>
+
+    <content></content>
+  </template>
+
+  <script>Polymer({is:"paper-button",behaviors:[Polymer.PaperButtonBehavior],properties:{raised:{type:Boolean,reflectToAttribute:!0,value:!1,observer:"_calculateElevation"}},_calculateElevation:function(){this.raised?Polymer.PaperButtonBehaviorImpl._calculateElevation.apply(this):this._setElevation(0)}});</script>
+</dom-module>
+</div><dom-module id="my-view1">
   <template>
-    <style include="app-grid-style">
+    <style include="app-grid-style shared-styles">
       :host {
         display: block;
         padding: 50px;
-        --app-grid-columns: 2;
+        --app-grid-columns: 1;
         --app-grid-gutter: 15px;
-        --app-grid-expandible-item-columns: 2;
+        --app-grid-expandible-item-columns: 1;
       }
-      .item:first-child { @apply(--app-grid-expandible-item); }
+
+      #main-grid {
+        width: 80%;
+        margin: 0 auto;
+
+      }
+
+      /*@media(min-width: 1470px) {
+        #resizingchart {
+          width: 500px;
+          /*width: 100%;/*
+        }
+      }
+
+      @media(max-width: 1470px) {
+        #resizingchart {
+          width: 700px;
+          /*width: 100%;*/
+        /*}
+      }
+        */
+        p {
+          /*color: rgba(0,0,40,.6);*/
+          font-weight: 300;
+        }
+
+        .item h1 {
+          font-weight: 400;
+          border-bottom: 2px solid var(--paper-pink-500) !important;
+          border-color: pink;
+          margin-bottom: 0;
+        }
+
+        a {
+          /*color: #EC407A;*/
+          /*color: var(--paper-pink-a200);*/
+          color: black;
+          text-decoration:none;
+        }
+
+        /*paper-card a {
+
+          color: var(--paper-pink-a700);
+          text-decoration:none;
+        }
+        paper-card a:hover {
+          text-decoration: underline;
+        }*/
+
+        paper-card {
+          background-color: inherit;
+        }
+
+        .card-content {
+            align: justify;
+            padding: 0px !important;
+        }
+
+        .implementation-button{
+          /*background-color: var(--paper-pink-500);*/
+          background-color: var(--paper-pink-500);
+        }
 
     </style>
 
-    <div class="app-grid">
-      <paper-card class="item">
+    <div id="main-grid" class="app-grid">
+      <div class="item">
+        <h1>What is <em>Trans-cloud</em></h1>
+        <paper-card elevation="0">
+          <div class="card-content">
+            <p align="justify">
+            The diversity in the way in which different cloud providers offer
+            their services, give their SLAs, present their QoS, or support
+            different technologies complicates the portability and
+            interoperability of cloud applications, and favors vendor lock- in.
+            After the proposal of unified APIs for IaaS services, unified APIs
+            for PaaS services, and the variety of proposed cross-cloud
+            application management tools, <em>trans-cloud</em> going one step further in
+            the unification of cloud services with a deployment tool in which
+            IaaS and PaaS services are integrated into a unified interface.<br>
+            <em>Trans-cloud</em> provides support for applications whose
+            components are to be deployed on different providers, indistinctly
+            using IaaS and PaaS services.
+          </p>
+          </div>
+        </paper-card>
+      </div>
 
-        <div class="card-content">
-          <div class="circle">1</div>
-          <div class="circle">111111</div>
+      <div class="item">
+        <h1>History</h1>
+        <paper-card elevation="0">
+          <div class="card-content">
+            <p align="justify">
+            Cloud Computing has experienced a growth in the
+            demand for its services, with a significant
+            increase in its popularity. The
+            Cloud promotes access on demand to a
+            large number of resources throughout
+            three main service models, namely
+            <strong>IaaS</strong>,
+            <strong>PaaS</strong>, and
+            <strong>SaaS</strong>
+            which allow cloud providers to offer
+            a set of useful features for current
+            IT requirements of the sector, among
+            which we find scalability and elasticity.
+            Given the interest in this computing
+            model durint last years.
+            Vendors have implemented their
+            solutions by developing their own cloud
+            service layers, with custom APIs that
+            expose their resources. Most of these
+            providers offer a set of similar services
+            as regards functionality, but developed
+            according to their own specifications,
+            This heterogeneity differences is now
+            giving rise to problems of interoperability
+            and portability between the different
+            providers's clouds. </p>
 
-          <h1>View One</h1>
-          <p>Ut labores minimum atomorum pro. Laudem tibique ut has.
-          </p><p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
-        </div>
-      </paper-card>
+            <p align="justify">In order to mitigate this heterogeneity and
+            find a vendor-agnostic solution, independent
+            tools and frameworks have
+            emerged with the goal of integrating, under
+            a single interface and, the services of multiple
+            public and private providers, promoting an aplication modeling
+            to formlize the application descriptions, such as
+            <a class="paper-link" href="https://brooklyn.apache.org/">Brooklyn</a>,
+            <a class="paper-link" href="https://www.terraform.io/">Terraform</a>,
+            <a class="paper-link" href="https://www.flexiant.com/">Flexiant</a> or
+            <a class="paper-link" href="http://roboconf.net/en/index.html">Roboconf</a>.
+           </p>
+          </div>
+        </paper-card>
 
-      <paper-card class="item">
-        <div class="card-content">
-          <div class="circle">1</div>
-          <div class="circle">111111</div>
-          <h1>View One</h1>
-          <p>Ut labores minimum atomorum pro. Laudem tibique ut has.
-          </p><p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
-        </div>
-      </paper-card>
+      </div>
 
+      <div class="item">
+        <h1>Trans-cloud's Unfolding</h1>
+        <paper-card elevation="0">
+          <div class="card-content" align="justify">
+            <p> 
+              In a very short time, the aforementioned platforms have
+              evolved according to the way in which users
+              can take advantage of integrated cloud services
+              to expose and run their systems. Terms such as
+              <ins><em>multi-cloud</em></ins>, <ins><em>cross-cloud</em></ins>,
+              <ins><em>federated clouds</em></ins>,
+              or<ins> <em>inter-clouds</em></ins>, have been used for
+              deployment platforms with the ability to distribute
+              modules of an application using services from
+              different providers. The main differences between
+              these approaches lie in the different ways of handling
+              the connections between modules deployed on different
+              platforms. However, in all these attempts, platforms
+              allow operating simultaneously with a single level of
+              service to deploy applications, i.e., all the components
+              of an application are deployed either at the IaaS level
+              or all at the PaaS level.
+            </p>
+            <p>
+              From this scenario, with the goal of unifying cloud services,
+              a second dimension is proposed by trans-cloud, in which deployment tools
+              integrate IaaS and PaaS levels under a single interface.
+              Then, this will allow developers to deploy their applications,
+              combining services offered by providers at any of these levels.
+              Following the evolution in terminology, multi-/cross-/inter-cloud,
+              trans-cloud is envisioned like a management tools without the limitations
+              it currently faces. The idea behind trans-cloud is to be able to
+              build our applications by using available services and resources
+              offered by different providers, at the IaaS, PaaS or SaaS levels,
+              indistinctly and in combination, using virtual machines,
+              containers and other services, according to our
+              needs and preferences.
+            </p>
+          </div>
+        </paper-card>
+      </div>
 
-      <paper-card class="item">
-        <div class="card-content">
-          <div class="circle">1</div>
-          <div class="circle">111111</div>
-          <h1>View One</h1>
-          <p>Ut labores minimum atomorum pro. Laudem tibique ut has.
-          </p><p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
-        </div>
-      </paper-card>
+      <div class="item">
+        <h1>Current Approach</h1>
+        <paper-card elevation="0">
+          <div class="card-content" align="justify">
+            <p> 
+              A first trans-cloud management tool prototype has beed developed
+              based on different open-projects,
+              <a class="paper-link" href="https://brooklyn.apache.org/">Apache Brooklyn</a>,
+              <a class="paper-link" href="https://alien4cloud.github.io/">Alien4Cloud</a> and
+              <a class="paper-link" href="https://https://github.com/cloudsoft/brooklyn-tosca/">Brooklyn-tosca</a>.<br>
+              Current trans-cloud approach uses a provider-agnostic
+              <a class="paper-link" href="https://www.oasis-open.org/committees/tosca/">TOSCA-based</a> model of the topology of applications
+              and their required resources, indistinctly
+              using IaaS and PaaS services. This modeling is based
+              on the
+              <a class="paper-link" href="http://docs.oasis-open.org/tosca/TOSCA-Simple-Profile-YAML/v1.0/TOSCA-Simple-Profile-YAML-v1.0.html/">TOSCA YAML profile</a>.
 
-      <paper-card class="item">
-        <div class="card-content">
-          <div class="circle">1</div>
-          <div class="circle">111111</div>
-          <h1>View One</h1>
-          <p>Ut labores minimum atomorum pro. Laudem tibique ut has.
-          </p><p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
-        </div>
-      </paper-card>
+            </p>
+          </div>
+        </paper-card>
+        <div align="right">
+          
+          <a target="_blank" href="https://github.com/scenic-uma/brooklyn-dist/tree/trans-cloud" tabindex="-1">
+            <paper-button toggles="" raised="" class="implementation-button" style="margin: 10px 0">
+            Go to Implementation
+            </paper-button>
+          </a>
+          <div>
+      </div>
 
-      <paper-card class="item">
-        <div class="card-content">
-          <div class="circle">1</div>
-          <div class="circle">111111</div>
-          <h1>View One</h1>
-          <p>Ut labores minimum atomorum pro. Laudem tibique ut has.
-          </p><p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
-        </div>
-      </paper-card>
-    </div>
-  </template>
+  </div></div></div></template>
 
   <script>Polymer({is:"my-view1"});</script>
 </dom-module>

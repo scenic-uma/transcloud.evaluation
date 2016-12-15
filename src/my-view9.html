@@ -1,0 +1,96 @@
+<html><head><meta charset="UTF-8"><link rel="import" href="my-app.html"></head><body><dom-module id="my-view9">
+  <template>
+    <style include="app-grid-style shared-styles">
+
+      :host {
+        display: flex;
+        justify-content: center;
+        --app-grid-columns: 2;
+        --app-grid-gutter: 15px;
+        --app-grid-expandible-item-columns: 2;
+      }
+
+      .first-card {
+        --paper-card-header: {
+          background-color: #FF4081;
+        };
+      }
+
+      #card-grid {
+        width: 1200px;
+      }
+
+      a paper-button,
+      a:active paper-button,
+      a:visited paper-button {
+        color: #000;
+      }
+
+      ul span {
+        color: rgb(117, 117, 117);
+        font-family: Roboto, Consolas, Menlo;
+        font-weight: 400 !important;
+      }
+
+      paper-card{
+        width: 100%;
+      }
+
+      @media(min-width: 1470px) {
+        .item:first-child {
+          @apply(--app-grid-expandible-item);
+          margin-right: 0px;
+          padding-right: inherit;
+        }
+      }
+
+      @media(max-width: 1470px) {
+        :host {
+          --app-grid-columns: 1;
+        }
+        #card-grid {
+          width: 800px;
+        }
+      }
+    </style>
+
+    <iron-ajax auto="" url="./data/chart/aws-softlayer-forum-data.json" handle-as="json" last-response="{{chartData}}">
+    </iron-ajax>
+
+    <div id="card-grid" class="app-grid">
+
+      <paper-card class="item first-card" heading="Deployment on AWS and Softlayer (Forum)">
+        <div class="card-content">
+        <span>Deployment of Softcare application using AWS and Softlayer Web Services.</span><br>
+        <span>In this trans-cloud use case, Softcare's components are distributed as following:</span>
+
+        <ul>
+          <li aling="right">
+            <a target="_blank" href="https://aws.amazon.com/"><paper-button>AWS:</paper-button></a>
+            <span> </span>
+            <span>SoftcareDashboard</span>, <span>Multimedia</span> and <span>SoftcareWS</span>
+          </li>
+          <li align="left">
+            <a target="_blank" href="http://www.softlayer.com/"><paper-button>Softlayer:</paper-button></a>
+            <span> </span>
+            <span>Forum</span>, <span>MultimediaDB</span>, <span>SoftcareDB</span> and <span>ForumDB</span>
+          </li>
+        </ul>
+        <span>Application was deployed 100 times</span>
+
+        </div>
+        <div class="card-actions">
+          <paper-icon-button class="download-icon" icon="cloud-download"></paper-icon-button>
+        </div>
+      </paper-card>
+
+      <template is="dom-repeat" id="domrepeatcomponent" items="{{chartData}}" initial-count="10" target-framerate="50" delay="2s">        <evaluation-chart data="{{item}}" evaluation="{{inc(index)}}" providers="AWS and Softlayer">
+        </evaluation-chart>
+      </template>
+    </div>
+
+  </template>
+
+  <script>Polymer({is:"my-view9",attached:function(){this._updateGridStyles=this._updateGridStyles||function(){this.updateStyles()}.bind(this),window.addEventListener("resize",this._updateGridStyles)},detached:function(){window.removeEventListener("resize",this._updateGridStyles)},inc:function(e){return e+1}});</script>
+</dom-module>
+</body></html>
